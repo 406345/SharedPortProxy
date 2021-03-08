@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\ScriptManager.cpp" />
+    <ClCompile Include="..\src\Configuration.cpp" />
+    <ClCompile Include="..\src\Filter.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\inc\EasyUsing.h" />
+    <ClInclude Include="..\src\SocketWrapper.hpp" />
+    <ClInclude Include="..\src\TcpConnection.hpp" />
+    <ClInclude Include="..\src\ScriptManager.h" />
+    <ClInclude Include="..\inc\tinyjson.h" />
+    <ClInclude Include="..\src\Configuration.h" />
+    <ClInclude Include="..\src\Filter.h" />
+  </ItemGroup>
+</Project>
