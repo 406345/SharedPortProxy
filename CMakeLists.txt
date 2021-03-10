@@ -1,6 +1,7 @@
-cmake_minimum_required(VERSION 3.4.1)
+#cmake_minimum_required(VERSION 3.4.1)
 
 project(spp)
+set(CMAKE_CXX_STANDARD 11)
 
 add_executable(spp src/main.cpp)
 
@@ -16,4 +17,4 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/3rd/rapidjson
 )
 
-target_link_libraries(demo libface.so) 
+# target_link_libraries(demo libface.so) 
