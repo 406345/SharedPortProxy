@@ -1,6 +1,6 @@
 #include "Configuration.h"
 
-shared_ptr<Configuration> Configuration::_instance;
+shared_ptr<Configuration> Configuration::_instance = nullptr;
 
 shared_ptr<Configuration> Configuration::get_instance()
 {
@@ -9,4 +9,12 @@ shared_ptr<Configuration> Configuration::get_instance()
 	}
 
 	return _instance;
-};
+}
+Configuration::Configuration()
+{
+	_instance = nullptr;
+}
+Configuration::~Configuration()
+{
+}
+;

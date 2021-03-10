@@ -17,8 +17,8 @@ public:
 	static shared_ptr<Configuration> _instance;
 	static shared_ptr<Configuration> get_instance();
 	
-	Configuration() {};
-	~Configuration() {};
+	Configuration();
+	~Configuration();
 
 	void initialize() {
 
@@ -30,17 +30,27 @@ public:
 		auto length = ftell(file);
 		fseek(file, 0, SEEK_SET);
 
-		json_buffer = new char[length ];
+		json_buffer = new char[length];
+		memset(json_buffer, 0, length);
 		fread(json_buffer, 1, length, file);
 		fclose(file);
 
 		json_doc.Parse(json_buffer,length);
+		
 
+		if (json_doc.HasParseError()) {
+
+			auto err = json_doc.GetParseError();
+
+			return false;
+		}
+		 
 		return true;
 	};
 
 	string script_path() {
 
+		//auto& root = json_doc.Begin();
 		auto& node = json_doc["script"];
 		return string(node["path"].GetString());
 	}
@@ -49,11 +59,11 @@ public:
 		unordered_map<string, string> ret;
 
 		auto& module_node = json_doc["script"]["module"];
-		if (module_node.Empty())
-			return std::move(ret);
-
-		auto t = module_node.GetArray();
-
+		
+		for (auto mem = module_node.MemberBegin(); mem != module_node.MemberEnd(); mem++)
+		{
+			ret[string(mem->name.GetString())] = string(mem->value.GetString());
+		}
 
 		return std::move(ret);
 		//return string(json_doc["script"]["module"][mod.data()].GetString());
@@ -73,6 +83,4 @@ public:
 private:
 	Document json_doc;
 	char* json_buffer = nullptr;
-	Value& root;
-
 };

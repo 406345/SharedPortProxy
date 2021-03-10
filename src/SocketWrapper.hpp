@@ -41,6 +41,7 @@ public:
 	SocketWrapper()
 	{
 		this->acceptor_ = make_shared<ip::tcp::acceptor>(context, ip::tcp::endpoint(ip::tcp::v4(), 9088));
+		this->start_accept();
 	};
 
 	~SocketWrapper() {
@@ -48,10 +49,6 @@ public:
 	};
 
 	void run() {
-
-		this->start_accept();
-		for(;;)
-			this->context.run_for(std::chrono::duration<int,std::milli>(1000*1024*1024));
-
+		this->context.run_one();
 	}
 };

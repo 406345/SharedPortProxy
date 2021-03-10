@@ -7,6 +7,5 @@ def filter(x):
 
 
 def detect(x):
-    x = ''.join([chr(l) for l in x[:3]])
-    if x == 'SSH': return True
+    print(x)
     return False

@@ -155,10 +155,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\inc\EasyUsing.h" />
-    <ClInclude Include="..\inc\tinyjson.h" />
     <ClInclude Include="..\src\Configuration.h" />
     <ClInclude Include="..\src\Filter.h" />
     <ClInclude Include="..\src\ScriptManager.h" />
+    <ClInclude Include="..\src\Semaphore.h" />
     <ClInclude Include="..\src\SocketWrapper.hpp" />
     <ClInclude Include="..\src\TcpConnection.hpp" />
   </ItemGroup>
